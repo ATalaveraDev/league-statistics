@@ -1,0 +1,65 @@
+<fieldset>
+  <legend class="text-center">Registro de jornada</legend>
+  <div class="row">
+    <div class="col-xs-offset-3 col-xs-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Última jornada</h3>
+        </div>
+        <div class="panel-body text-center">
+          <div>
+            Jornada 12
+          </div>
+          <div>
+            <label>Jugador 1</label> <span>18 puntos</span>
+          </div>
+          <div>
+            <label>Jugador 2</label> <span>18 puntos</span>
+          </div>
+          <div>
+            <label>Jugador 3</label> <span>18 puntos</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-offset-2 col-xs-10">
+      <form class="form-horizontal" novalidate [formGroup]="fixtureForm">
+        <div class="row">
+          <div class="form-group col-xs-4">
+            <select name="fixture" class="form-control" (change)="onChangeFixtureSelector()" formControlName="name">
+              <option value="" disabled>Seleccionar jornada</option>
+              <option *ngFor="let fixture of fixtures" [ngValue]="fixture">{{fixture}}</option>
+            </select>
+          </div>
+          <div class="col-xs-8">
+            <div class="form-group">
+              <label class="control-label col-xs-3">Yerbinho</label>
+              <div class="col-xs-6">
+                <input type="text" class="form-control" placeholder="Ptos" formControlName="player1points">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-3">The Pumpkin</label>
+              <div class="col-xs-6">
+                <input type="text" class="form-control" placeholder="Ptos" formControlName="player2points">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="control-label col-xs-3">Txarlo Magno</label>
+              <div class="col-xs-6">
+                <input type="text" class="form-control" placeholder="Ptos" formControlName="player3points">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-10 text-center">
+            <button class="btn btn-lg btn-success" (click)="submitForm()">Hecho</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</fieldset>
