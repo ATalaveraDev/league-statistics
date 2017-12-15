@@ -22,6 +22,7 @@ app.use(function(req, res, next) {
 });
 
 require('./server/routes/players.routes')(app);
+require('./server/routes/fixtures.routes')(app);
 
 app.listen(port);
 
