@@ -1,5 +1,5 @@
-var Player = require('Player');
-var SoccerPlayer = require('SoccerPlayer');
+var Player = require('../models/player');
+var SoccerPlayer = require('../models/soccerPlayer');
 
 module.exports = function (app) {
   app.route('/api/players/:id/soccer-players')
