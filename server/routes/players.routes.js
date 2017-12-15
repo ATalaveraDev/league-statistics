@@ -41,5 +41,16 @@ module.exports = function (app) {
       Player.findByIdAndUpdate(request.params.id, { $push: { team: request.body.soccerPlayer } }).then(function (result) {
         return res.send(result);
       });
+    })
+    .delete(function (request, res) {
+      Player.findById(request.params.id, function (error, player) {
+        var updatedTeam = player.team.filter(function (element) {
+          return element.name !== request.body.soccerPlayerName;
+        });
+
+        Player.findByIdAndUpdate(request.params.id, { team: updatedTeam }).then(function (result) {
+          return res.send(result);
+        });
+      });
     });
 };
