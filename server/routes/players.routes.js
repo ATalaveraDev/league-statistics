@@ -53,4 +53,21 @@ module.exports = function (app) {
         });
       });
     });
+
+  app.route('/api/players/:id/team/soccer-player/:name/points')
+    .post(function (request, res) {
+      Player.findById(request.params.id, function (error, player) {
+        var updatedTeam = player.team.map(function (element) {
+          if (element.name === request.params.name) {
+            element.points = request.body.points;
+          }
+
+          return element;
+        });
+
+        Player.findByIdAndUpdate(request.params.id, { team: updatedTeam }).then(function (result) {
+          return res.send(result);
+        });
+      });
+    });
 };
