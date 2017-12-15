@@ -35,4 +35,11 @@ module.exports = function (app) {
         return res.send(result);
       });
     });
+
+  app.route('/api/players/:id/team/soccer-player')
+    .post(function (request, res) {
+      Player.findByIdAndUpdate(request.params.id, { $push: { team: request.body.soccerPlayer } }).then(function (result) {
+        return res.send(result);
+      });
+    });
 };
