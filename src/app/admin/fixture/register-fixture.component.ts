@@ -5,13 +5,14 @@ import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-register-fixture',
-  templateUrl: 'register-fixture.component.html'
+  templateUrl: 'register-fixture.component.html',
+  providers: [AdminService]
 })
 export class RegisterFixtureComponent implements OnInit {
   fixtures: Array<string>;
   fixtureForm: FormGroup;
 
-  constructor(private adminSrv: AdminService) {
+  constructor(public adminSrv: AdminService) {
     this.fixtures = [];
 
     for (let i = 1; i < 39; i++) {
@@ -26,6 +27,8 @@ export class RegisterFixtureComponent implements OnInit {
       player2points: new FormControl('', Validators.required),
       player3points: new FormControl('', Validators.required)
     });
+
+    this.adminSrv.getLastFixture();
   }
 
   onChangeFixtureSelector(val): void {

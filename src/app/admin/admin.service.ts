@@ -4,7 +4,7 @@ import { HttpClient } from '@angular/common/http';
 
 @Injectable()
 export class AdminService {
-  lastFixtureSubject = new ReplaySubject();
+  lastFixtureSubject = new ReplaySubject<any>();
 
   lastFixture$ = this.lastFixtureSubject.asObservable();
 
@@ -15,5 +15,10 @@ export class AdminService {
   editFixture(fixture): void {
     this.http.post('http://localhost:8080/api/fixtures', fixture)
       .subscribe((result) => this.lastFixtureSubject.next(result));
+  }
+
+  getLastFixture(): void {
+    this.http.get('http://localhost:8080/api/fixtures/last')
+      .subscribe((response: any) => this.lastFixtureSubject.next({ players: response.results, name: response.name }));
   }
 }

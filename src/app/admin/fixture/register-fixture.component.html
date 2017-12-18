@@ -8,16 +8,10 @@
         </div>
         <div class="panel-body text-center">
           <div>
-            {{adminSrv.lastFixture$ | async}}
+            {{(adminSrv.lastFixture$ | async)?.name}}
           </div>
-          <div>
-            <label>Jugador 1</label> <span>18 puntos</span>
-          </div>
-          <div>
-            <label>Jugador 2</label> <span>18 puntos</span>
-          </div>
-          <div>
-            <label>Jugador 3</label> <span>18 puntos</span>
+          <div *ngFor="let player of (adminSrv.lastFixture$ | async)?.players">
+            <label>{{player.name}}</label> <span>{{player.points}} puntos</span>
           </div>
         </div>
       </div>
