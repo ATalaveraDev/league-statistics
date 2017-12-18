@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { HttpClient } from '@angular/common/http';
+
+import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-register-fixture',
@@ -10,7 +11,7 @@ export class RegisterFixtureComponent implements OnInit {
   fixtures: Array<string>;
   fixtureForm: FormGroup;
 
-  constructor(private http: HttpClient) {
+  constructor(private adminSrv: AdminService) {
     this.fixtures = [];
 
     for (let i = 1; i < 39; i++) {
@@ -50,7 +51,7 @@ export class RegisterFixtureComponent implements OnInit {
       ]
     };
 
-    this.http.post('http://localhost:8080/api/fixtures', fixture)
-      .subscribe(() => this.fixtureForm.reset());
+    this.adminSrv.editFixture(fixture);
+    this.fixtureForm.reset();
   }
 }

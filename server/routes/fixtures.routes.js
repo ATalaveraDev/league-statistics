@@ -19,4 +19,13 @@ module.exports = function (app) {
         return response.send(fixture);
       });
     });
+
+  app.route('/api/fixtures/last')
+    .get(function (request, response) {
+      Fixture.findOne(function (error, response) {
+        return response;
+      }).sort({ 'name': 1 }).then(function (fixture) {
+        return response.send(fixture);
+      });
+    });
 };
