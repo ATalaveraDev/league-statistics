@@ -1,15 +1,13 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { HttpClient } from '@angular/common/http';
+import { ReplaySubject } from 'rxjs/ReplaySubject';
 
 @Injectable()
 export class AdminService {
   lastFixtureSubject = new ReplaySubject<any>();
   lastFixture$ = this.lastFixtureSubject.asObservable();
 
-  constructor(private http: HttpClient) {
-
-  }
+  constructor(private http: HttpClient) { }
 
   editFixture(fixture): void {
     this.http.post('http://localhost:8080/api/fixtures', fixture)
