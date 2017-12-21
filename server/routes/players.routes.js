@@ -15,6 +15,7 @@ module.exports = function (app) {
       newPlayer.name = request.body.name;
       newPlayer.points = request.body.points;
       newPlayer.team = request.body.team;
+      newPlayer.position = request.body.position;
 
       newPlayer.save().then(function (result) {
         return res.send(result);
