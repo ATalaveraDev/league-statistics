@@ -40,21 +40,22 @@ export class RegisterFixtureComponent implements OnInit {
       name: this.fixtureForm.value.name,
       results: [
         {
-          playerName: 'Yerbinho',
+          name: 'Yerbinho',
           points: this.fixtureForm.value.player1points
         },
         {
-          playerName: 'ThePumpkin',
+          name: 'ThePumpkin',
           points: this.fixtureForm.value.player2points
         },
         {
-          playerName: 'Txarlo Magno',
+          name: 'Txarlo Magno',
           points: this.fixtureForm.value.player3points
-        },
+        }
       ]
     };
 
     this.adminSrv.editFixture(fixture);
     this.fixtureForm.reset();
+    this.adminSrv.getLastFixture();
   }
 }
