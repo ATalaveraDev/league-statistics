@@ -1,10 +1,10 @@
 <fieldset>
   <legend class="text-center">Registro de jugador</legend>
   <div class="row">
-    <div class="col-xs-offset-2 col-xs-10">
+    <div class="col-xs-12">
       <form class="form-group" novalidate>
-        <div class="row">
-          <div class="form-group col-xs-offset-3 col-xs-5">
+        <div class="row margin-10">
+          <div class="form-group col-xs-6">
             <select class="form-control">
               <option value="">Seleccionar posición</option>
               <option value="gk">Portero</option>
@@ -13,14 +13,12 @@
               <option value="dl">Delantero</option>
             </select>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group col-xs-offset-3 col-xs-5">
+          <div class="form-group col-xs-6">
             <input type="text" class="form-control" placeholder="Nombre">
           </div>
         </div>
-        <div class="row">
-          <div class="form-group col-xs-offset-3 col-xs-5">
+        <div class="row margin-10">
+          <div class="form-group col-xs-6">
             <select class="form-control">
               <option value="">Selecionar equipo</option>
               <option value="yerbinho">Yerbinho</option>
@@ -28,9 +26,12 @@
               <option value="thePumpkin">ThePumpkin</option>
             </select>
           </div>
+          <div class="form-group col-xs-6">
+            <input type="text" class="form-control" placeholder="Puntos">
+          </div>
         </div>
         <div class="row">
-          <div class="col-xs-10 text-center">
+          <div class="col-xs-12 text-center">
             <button class="btn btn-lg btn-success" (click)="submitForm()">Hecho</button>
           </div>
         </div>
