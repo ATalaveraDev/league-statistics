@@ -6,6 +6,7 @@ import { AdminComponent } from './admin.component';
 import { RegisterFixtureComponent } from './fixture/register-fixture.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AdminService } from './admin.service';
+import { RegisterPlayerComponent } from './player/register-player.component';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { AdminService } from './admin.service';
   ],
   declarations: [
     AdminComponent,
-    RegisterFixtureComponent
+    RegisterFixtureComponent,
+    RegisterPlayerComponent
   ],
   providers: [AdminService]
 })

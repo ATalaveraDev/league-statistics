@@ -1,0 +1,40 @@
+<fieldset>
+  <legend class="text-center">Registro de jugador</legend>
+  <div class="row">
+    <div class="col-xs-offset-2 col-xs-10">
+      <form class="form-group" novalidate>
+        <div class="row">
+          <div class="form-group col-xs-offset-3 col-xs-5">
+            <select class="form-control">
+              <option value="">Seleccionar posición</option>
+              <option value="gk">Portero</option>
+              <option value="df">Defensa</option>
+              <option value="mf">Centrocampista</option>
+              <option value="dl">Delantero</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-offset-3 col-xs-5">
+            <input type="text" class="form-control" placeholder="Nombre">
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-xs-offset-3 col-xs-5">
+            <select class="form-control">
+              <option value="">Selecionar equipo</option>
+              <option value="yerbinho">Yerbinho</option>
+              <option value="txarloMagno">Txarlo Magno</option>
+              <option value="thePumpkin">ThePumpkin</option>
+            </select>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-10 text-center">
+            <button class="btn btn-lg btn-success" (click)="submitForm()">Hecho</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</fieldset>
