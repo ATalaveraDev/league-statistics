@@ -5,7 +5,7 @@
       <form class="form-horizontal" novalidate [formGroup]="fixtureForm">
         <div class="row">
           <div class="form-group col-xs-4">
-            <select name="fixture" class="form-control" (change)="onChangeFixtureSelector()" formControlName="name">
+            <select name="fixture" class="form-control" formControlName="name">
               <option value="" disabled>Seleccionar jornada</option>
               <option *ngFor="let fixture of fixtures" [ngValue]="fixture">{{fixture}}</option>
             </select>

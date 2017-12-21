@@ -31,10 +31,6 @@ export class RegisterFixtureComponent implements OnInit {
     this.adminSrv.getLastFixture();
   }
 
-  onChangeFixtureSelector(val): void {
-
-  }
-
   submitForm(): void {
     const fixture = {
       name: this.fixtureForm.value.name,
