@@ -5,7 +5,6 @@ import { HttpClient } from '@angular/common/http';
 @Injectable()
 export class AdminService {
   lastFixtureSubject = new ReplaySubject<any>();
-
   lastFixture$ = this.lastFixtureSubject.asObservable();
 
   constructor(private http: HttpClient) {
