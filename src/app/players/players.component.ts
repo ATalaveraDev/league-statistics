@@ -4,8 +4,7 @@ import { PlayersService } from './players.service';
 
 @Component({
   selector: 'app-players',
-  templateUrl: 'players.component.html',
-  providers: [PlayersService]
+  templateUrl: 'players.component.html'
 })
 export class PlayersComponent implements OnInit {
   id = 'chart1';
@@ -15,7 +14,7 @@ export class PlayersComponent implements OnInit {
   dataFormat = 'json';
   dataSource;
 
-  constructor(public service: PlayersService) { }
+  constructor(private service: PlayersService) { }
 
   ngOnInit(): void {
     this.service.getStandings();

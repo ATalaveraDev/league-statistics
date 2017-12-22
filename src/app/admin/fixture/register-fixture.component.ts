@@ -5,14 +5,13 @@ import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-register-fixture',
-  templateUrl: 'register-fixture.component.html',
-  providers: [AdminService]
+  templateUrl: 'register-fixture.component.html'
 })
 export class RegisterFixtureComponent implements OnInit {
   fixtures: Array<string>;
   fixtureForm: FormGroup;
 
-  constructor(public adminSrv: AdminService) {
+  constructor(private adminSrv: AdminService) {
     this.fixtures = [];
 
     for (let i = 1; i < 39; i++) {
