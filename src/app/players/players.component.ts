@@ -18,7 +18,7 @@ export class PlayersComponent implements OnInit {
   ngOnInit(): void {
     this.dataSource = {
       chart: {
-        caption: 'Clasificación histórica',
+        caption: 'Historial de puntos',
         subCaption: '',
         theme: 'fint',
         paletteColors: '#0075c2,#1aaf5d, #ff0000'
