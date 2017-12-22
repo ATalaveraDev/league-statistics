@@ -9,8 +9,7 @@ export class PlayersService {
 
   constructor(private http: HttpClient) {}
 
-  getStandings(): void {
-    this.http.get('http://localhost:8080/api/fixtures/standings')
-      .subscribe((response: any) => this.standingsSubject.next(response));
+  getStandings() {
+    return this.http.get('http://localhost:8080/api/fixtures/standings');
   }
 }

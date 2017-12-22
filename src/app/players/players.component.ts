@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-import { PlayersService } from './players.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-players',
@@ -14,21 +13,18 @@ export class PlayersComponent implements OnInit {
   dataFormat = 'json';
   dataSource;
 
-  constructor(private service: PlayersService) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.service.getStandings();
-    this.service.standings$.subscribe((standings: any) => {
-      this.dataSource = {
-        chart: {
-          caption: 'Clasificación histórica',
-          subCaption: '',
-          theme: 'fint',
-          paletteColors: '#0075c2,#1aaf5d, #ff0000'
-        },
-        categories: standings.labels,
-        dataset: standings.dataset
-      };
-    });
+    this.dataSource = {
+      chart: {
+        caption: 'Clasificación histórica',
+        subCaption: '',
+        theme: 'fint',
+        paletteColors: '#0075c2,#1aaf5d, #ff0000'
+      },
+      categories: this.route.snapshot.data.standings.labels,
+      dataset: this.route.snapshot.data.standings.dataset
+    };
   }
 }
