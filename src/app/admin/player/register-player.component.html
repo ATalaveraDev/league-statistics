@@ -2,32 +2,30 @@
   <legend class="text-center">Registro de jugador</legend>
   <div class="row">
     <div class="col-xs-12">
-      <form class="form-group" novalidate>
+      <form class="form-group" novalidate [formGroup]="playerForm">
         <div class="row margin-10">
           <div class="form-group col-xs-6">
-            <select class="form-control">
+            <select class="form-control" formControlName="position">
               <option value="">Seleccionar posición</option>
-              <option value="gk">Portero</option>
-              <option value="df">Defensa</option>
-              <option value="mf">Centrocampista</option>
-              <option value="dl">Delantero</option>
+              <option value="PT">Portero</option>
+              <option value="DF">Defensa</option>
+              <option value="MC">Centrocampista</option>
+              <option value="DL">Delantero</option>
             </select>
           </div>
           <div class="form-group col-xs-6">
-            <input type="text" class="form-control" placeholder="Nombre">
+            <input type="text" class="form-control" placeholder="Nombre" formControlName="name">
           </div>
         </div>
         <div class="row margin-10">
           <div class="form-group col-xs-6">
-            <select class="form-control">
+            <select class="form-control" formControlName="team">
               <option value="">Selecionar equipo</option>
-              <option value="yerbinho">Yerbinho</option>
-              <option value="txarloMagno">Txarlo Magno</option>
-              <option value="thePumpkin">ThePumpkin</option>
+              <option value="{{player._id}}" *ngFor="let player of appSrv.players">{{player.name}}</option>
             </select>
           </div>
           <div class="form-group col-xs-6">
-            <input type="text" class="form-control" placeholder="Puntos">
+            <input type="text" class="form-control" placeholder="Puntos" formControlName="points">
           </div>
         </div>
         <div class="row">

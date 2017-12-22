@@ -18,4 +18,17 @@ export class AdminService {
     this.http.get('http://localhost:8080/api/fixtures/last')
       .subscribe((response: any) => this.lastFixtureSubject.next({ players: response.results, name: response.name }));
   }
+
+  addTeamPlayer(player: any): void {
+    const body = {
+      soccerPlayer: {
+        points: player.points,
+        name: player.name,
+        position: player.position
+      }
+    };
+
+    this.http.post('http://localhost:8080/api/players/' + player.team + '/team/soccer-player', body)
+      .subscribe();
+  }
 }
