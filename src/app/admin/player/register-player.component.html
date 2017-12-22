@@ -21,7 +21,7 @@
           <div class="form-group col-xs-6">
             <select class="form-control" formControlName="team">
               <option value="">Selecionar equipo</option>
-              <option value="{{player._id}}" *ngFor="let player of appSrv.players">{{player.name}}</option>
+              <option value="{{player._id}}" *ngFor="let player of appSrv.players$ | async">{{player.name}}</option>
             </select>
           </div>
           <div class="form-group col-xs-6">
