@@ -6,6 +6,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 
 @Injectable()
 export class PlayersService {
+  // endpoint para saber la pasta https://api-game.laligafantasymarca.com/api/1/league/01320484/ranking/23
   standingsSubject = new ReplaySubject<any>();
   standings$ = this.standingsSubject.asObservable();
 

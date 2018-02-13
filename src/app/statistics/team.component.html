@@ -1,0 +1,22 @@
+<label>{{owner}}</label>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let player of team?.goalkeepers">
+    <span>{{player.nickname}}</span>
+    <span class="pull-right badge">{{player.points}}</span>
+  </li>
+  <br>
+  <li class="list-group-item" *ngFor="let player of team?.defenders.members" [ngClass]="{'list-group-item-success': player.nickname === team?.defenders.best.nickname}">
+    <span>{{player.nickname}}</span>
+    <span class="pull-right badge">{{player.points}}</span>
+  </li>
+  <br>
+  <li class="list-group-item" *ngFor="let player of team?.midfielders.members" [ngClass]="{'list-group-item-success': player.nickname === team?.midfielders.best.nickname}">
+    <span>{{player.nickname}}</span>
+    <span class="pull-right badge">{{player.points}}</span>
+  </li>
+  <br>
+  <li class="list-group-item" *ngFor="let player of team?.strikers.members" [ngClass]="{'list-group-item-success': player.nickname === team?.strikers.best.nickname}">
+    <span>{{player.nickname}}</span>
+    <span class="pull-right badge">{{player.points}}</span>
+  </li>
+</ul>

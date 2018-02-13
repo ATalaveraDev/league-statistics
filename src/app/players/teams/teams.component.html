@@ -33,75 +33,12 @@
 </div>-->
 <div class="row text-center">
   <div class="col-xs-4">
-    <label>Yerbinho</label>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let player of (playersSrv.yerbinhoTeam$ | async)?.goalkeepers">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.yerbinhoTeam$ | async)?.defenders.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.yerbinhoTeam$ | async)?.defenders.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.yerbinhoTeam$ | async)?.midfielders.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.yerbinhoTeam$ | async)?.midfielders.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.yerbinhoTeam$ | async)?.strikers.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.yerbinhoTeam$ | async)?.strikers.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-    </ul>
+    <app-team [team]="playersSrv.yerbinhoTeam$ | async" [owner]="'Yerbinho'"></app-team>
   </div>
   <div class="col-xs-4">
-    <label>Txarlo Magno</label>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let player of (playersSrv.txarloTeam$ | async)?.goalkeepers">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.txarloTeam$ | async)?.defenders.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.txarloTeam$ | async)?.defenders.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.txarloTeam$ | async)?.midfielders.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.txarloTeam$ | async)?.midfielders.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.txarloTeam$ | async)?.strikers.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.txarloTeam$ | async)?.strikers.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-    </ul>
+    <app-team [team]="playersSrv.txarloTeam$ | async" [owner]="'Txarlo Magno'"></app-team>
   </div>
   <div class="col-xs-4">
-    <label>The Pumpkin</label>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let player of (playersSrv.pumpkinTeam$ | async)?.goalkeepers">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.pumpkinTeam$ | async)?.defenders.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.pumpkinTeam$ | async)?.defenders.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.pumpkinTeam$ | async)?.midfielders.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.pumpkinTeam$ | async)?.midfielders.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-      <br>
-      <li class="list-group-item" *ngFor="let player of (playersSrv.pumpkinTeam$ | async)?.strikers.members" [ngClass]="{'list-group-item-success': player.nickname === (playersSrv.pumpkinTeam$ | async)?.strikers.best.nickname}">
-        <span>{{player.nickname}}</span>
-        <span class="pull-right badge">{{player.points}}</span>
-      </li>
-    </ul>
+    <app-team [team]="playersSrv.pumpkinTeam$ | async" [owner]="'The Pumpkin'"></app-team>
   </div>
 </div>
