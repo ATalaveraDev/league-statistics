@@ -24,6 +24,7 @@ app.use(function(req, res, next) {
 require('./server/routes/players.routes')(app);
 require('./server/routes/fixtures.routes')(app);
 require('./server/routes/teams.routes')(app);
+require('./server/routes/statistics.routes')(app);
 
 app.listen(port);
 

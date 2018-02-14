@@ -36,15 +36,15 @@ export class RegisterFixtureComponent implements OnInit {
       results: [
         {
           name: 'Yerbinho',
-          points: this.fixtureForm.value.player1points
+          points: Number(this.fixtureForm.value.player1points)
         },
         {
           name: 'ThePumpkin',
-          points: this.fixtureForm.value.player2points
+          points: Number(this.fixtureForm.value.player2points)
         },
         {
           name: 'Txarlo Magno',
-          points: this.fixtureForm.value.player3points
+          points: Number(this.fixtureForm.value.player3points)
         }
       ]
     };
