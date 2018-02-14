@@ -89,7 +89,7 @@ export class PlayersService {
   }
 
   private getTeam(team: number): Observable<any> {
-    return this.http.get('https://api-game.laligafantasymarca.com/api/1/team/' + team + '/lineup/23', {headers: this.headers});
+    return this.http.get('https://api-game.laligafantasymarca.com/api/1/team/' + team + '/lineup', {headers: this.headers});
   }
 
   private getBestLineMember(members: Array<any>): any {
