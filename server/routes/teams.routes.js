@@ -1,4 +1,5 @@
 const https = require('https');
+var constants = require('../constants.js');
 
 module.exports = function (app) {
   app.route('/api/teams/:playerId')
@@ -11,15 +12,13 @@ module.exports = function (app) {
 
 function getPlayerTeam(request, result) {
   var data = '';
-
-  https.get({hostname: 'api-game.laligafantasymarca.com', path: '/api/1/team/' + request.params.playerId + '/lineup', headers: {'Authorization': 'Bearer ' + request.headers.bearer}}, function (response) {
+  https.get({hostname: constants.hostname, path: constants.teamPath + request.params.playerId + '/lineup', headers: {'Authorization': 'Bearer ' + request.headers.bearer}}, function (response) {
     response.on('data', function (chunk) {
       data += chunk;
     });
 
     response.on('end', function () {
-      data = JSON.parse(data);
-      result(data);
+      result(JSON.parse(data));
     });
   });
 }
