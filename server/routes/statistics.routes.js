@@ -23,13 +23,13 @@ module.exports = function (app) {
 
       Fixture.find(function (error, result) {
         result.slice(2).forEach(function (fixture) {
-          chooseWinners(fixture.results);
+          setScores(fixture.results);
         });
 
         response.send(results);
       });
 
-      function chooseWinners(fixturePoints) {
+      function setScores(fixturePoints) {
         fixturePoints.sort(function (elementA, elementB) {
           if (elementA.points < elementB.points) {
             return 1;
@@ -41,6 +41,11 @@ module.exports = function (app) {
           return 0;
         });
 
+        setWins(fixturePoints);
+        setLost(fixturePoints);
+      }
+
+      function setWins(fixturePoints) {
         if (fixturePoints[0].points !== fixturePoints[1].points) {
           if (fixturePoints[0].name === 'Yerbinho') {
             results[0].win++;
@@ -50,7 +55,9 @@ module.exports = function (app) {
             results[2].win++;
           }
         }
+      }
 
+      function setLost(fixturePoints) {
         if (fixturePoints[2].name === 'Yerbinho') {
           results[0].lost++;
         } else if (fixturePoints[2].name === 'Txarlo Magno') {
