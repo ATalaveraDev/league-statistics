@@ -9,6 +9,10 @@ const routes = [
   {
     path: 'players',
     loadChildren: 'app/players/players.module#PlayersModule'
+  },
+  {
+    path: 'teams',
+    loadChildren: 'app/teams/teams.module#TeamsModule'
   }
 ];
 
