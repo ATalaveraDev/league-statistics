@@ -17,6 +17,13 @@ export class PlayersService {
   pumpkinTeamSubject: ReplaySubject<any>;
   pumpkinTeam$: Observable<any>;
 
+  txarloLivePointsSubject: ReplaySubject<any>;
+  txarloLivePoints$: Observable<any>;
+  yerbinhoLivePointsSubject: ReplaySubject<any>;
+  yerbinhoLivePoints$: Observable<any>;
+  pumpkinLivePointsSubject: ReplaySubject<any>;
+  pumpkinLivePoints$: Observable<any>;
+
   scoresSubject: ReplaySubject<any>;
   scores$: Observable<any>;
 
@@ -29,6 +36,13 @@ export class PlayersService {
     this.yerbinhoTeam$ = this.yerbinhoTeamSubject.asObservable();
     this.pumpkinTeamSubject = new ReplaySubject<any>();
     this.pumpkinTeam$ = this.pumpkinTeamSubject.asObservable();
+
+    this.txarloLivePointsSubject = new ReplaySubject<any>();
+    this.txarloLivePoints$ = this.txarloLivePointsSubject.asObservable();
+    this.yerbinhoLivePointsSubject = new ReplaySubject<any>();
+    this.yerbinhoLivePoints$ = this.yerbinhoLivePointsSubject.asObservable();
+    this.pumpkinLivePointsSubject = new ReplaySubject<any>();
+    this.pumpkinLivePoints$ = this.pumpkinLivePointsSubject.asObservable();
 
     this.scoresSubject = new ReplaySubject<any>();
     this.scores$ = this.scoresSubject.asObservable();
@@ -113,5 +127,14 @@ export class PlayersService {
 
   getResults(): void {
     this.http.get('/api/statistics/results').subscribe(data => this.scoresSubject.next(data));
+  }
+
+  getLivePoints(): void {
+    this.http.get('/api/players/968709/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
+      .subscribe((response => this.txarloLivePointsSubject.next(response)));
+    this.http.get('/api/players/1008589/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
+      .subscribe((response => this.yerbinhoLivePointsSubject.next(response)));
+    this.http.get('/api/players/969731/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
+      .subscribe((response => this.pumpkinLivePointsSubject.next(response)));
   }
 }

@@ -3,7 +3,7 @@ var constants = require('../constants.js');
 const axios = require('axios');
 
 module.exports = function (app) {
-  app.route('/api/player/:playerId/points/live')
+  app.route('/api/players/:playerId/points/live')
     .get(function (request, response) {
       getPoints(request).then(function (result) {
         var promisesArray = [];
