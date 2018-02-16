@@ -1,17 +1,42 @@
-<div class="row">
-  <div class="col-xs-12 text-center">
-    <fusioncharts
-      [id]="id"
-      [width]="width"
-      [height]="height"
-      [type]="type"
-      [dataFormat]="dataFormat"
-      [dataSource]="dataSource"
-    ></fusioncharts>
+<fieldset>
+  <legend>Puntos</legend>
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <fusioncharts
+        [id]="id"
+        [width]="width"
+        [height]="height"
+        [type]="type"
+        [dataFormat]="dataFormat"
+        [dataSource]="dataSource"
+      ></fusioncharts>
+    </div>
   </div>
-</div>
-<!--<div class="row">
-  <div class="col-xs-12">
-    <app-teams></app-teams>
+</fieldset>
+<fieldset>
+  <legend>Datos</legend>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Yerbinho</th>
+            <th>Txarlo Magno</th>
+            <th>The Pumpkin</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Jornadas Ganadas</td>
+            <td *ngFor="let score of (playersSrv.scores$ | async)">{{ score.win }}</td>
+          </tr>
+          <tr>
+            <td>Jornadas Perdidas</td>
+            <td *ngFor="let score of (playersSrv.scores$ | async)">{{ score.lost }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
-</div>-->
+</fieldset>

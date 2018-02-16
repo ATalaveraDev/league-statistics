@@ -21,6 +21,8 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(express.static(__dirname + '/dist'));
+
 require('./server/routes/players.routes')(app);
 require('./server/routes/fixtures.routes')(app);
 require('./server/routes/teams.routes')(app);

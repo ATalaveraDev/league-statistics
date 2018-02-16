@@ -11,6 +11,6 @@ export class PlayersResolver implements Resolve<any> {
   constructor(private playersSrv: PlayersService) { }
 
   resolve(): Observable<any> {
-    return  this.playersSrv.getStandings().map((data) => data);
+    return this.playersSrv.getStandings().map((data) => data);
   }
 }

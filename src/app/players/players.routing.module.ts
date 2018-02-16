@@ -7,7 +7,9 @@ import { PlayersResolver } from './players.resolver';
 const routes = [
   { path: '',
     component: PlayersComponent,
-    resolve: { standings: PlayersResolver }
+    resolve: {
+      standings: PlayersResolver
+    }
   }
 ];
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PlayersService } from './players.service';
 
 @Component({
   selector: 'app-players',
@@ -13,7 +14,11 @@ export class PlayersComponent implements OnInit {
   dataFormat = 'json';
   dataSource;
 
-  constructor(private route: ActivatedRoute) { }
+  scores: Array<any>;
+
+  constructor(private route: ActivatedRoute, public playersSrv: PlayersService) {
+    this.playersSrv.getResults();
+  }
 
   ngOnInit(): void {
     this.dataSource = {

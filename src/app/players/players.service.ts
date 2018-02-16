@@ -17,6 +17,9 @@ export class PlayersService {
   pumpkinTeamSubject: ReplaySubject<any>;
   pumpkinTeam$: Observable<any>;
 
+  scoresSubject: ReplaySubject<any>;
+  scores$: Observable<any>;
+
   headers: HttpHeaders;
 
   constructor(private http: HttpClient) {
@@ -26,6 +29,9 @@ export class PlayersService {
     this.yerbinhoTeam$ = this.yerbinhoTeamSubject.asObservable();
     this.pumpkinTeamSubject = new ReplaySubject<any>();
     this.pumpkinTeam$ = this.pumpkinTeamSubject.asObservable();
+
+    this.scoresSubject = new ReplaySubject<any>();
+    this.scores$ = this.scoresSubject.asObservable();
 
     this.headers = new HttpHeaders({Authorization: 'Bearer 471f92412e69226a87f489c4dfa90a93'});
   }
@@ -103,5 +109,9 @@ export class PlayersService {
 
       return 0;
     })[0];
+  }
+
+  getResults(): void {
+    this.http.get('http://localhost:8080/api/statistics/results').subscribe(data => this.scoresSubject.next(data));
   }
 }
