@@ -10,12 +10,12 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   editFixture(fixture): void {
-    this.http.post('http://localhost:8080/api/fixtures', fixture)
+    this.http.post('/api/fixtures', fixture)
       .subscribe((result) => this.lastFixtureSubject.next(result));
   }
 
   getLastFixture(): void {
-    this.http.get('http://localhost:8080/api/fixtures/last')
+    this.http.get('/api/fixtures/last')
       .subscribe((response: any) => this.lastFixtureSubject.next({ players: response.results, name: response.name }));
   }
 
@@ -28,7 +28,7 @@ export class AdminService {
       }
     };
 
-    this.http.post('http://localhost:8080/api/players/' + player.team + '/team/soccer-player', body)
+    this.http.post('/api/players/' + player.team + '/team/soccer-player', body)
       .subscribe();
   }
 }

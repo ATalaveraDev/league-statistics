@@ -37,7 +37,7 @@ export class PlayersService {
   }
 
   getStandings() {
-    return this.http.get('http://localhost:8080/api/fixtures/standings');
+    return this.http.get('/api/fixtures/standings');
   }
 
   getTeamMembers(): void {
@@ -112,6 +112,6 @@ export class PlayersService {
   }
 
   getResults(): void {
-    this.http.get('http://localhost:8080/api/statistics/results').subscribe(data => this.scoresSubject.next(data));
+    this.http.get('/api/statistics/results').subscribe(data => this.scoresSubject.next(data));
   }
 }

@@ -8,7 +8,7 @@ export class AppService {
   players$ = this.playersSubject.asObservable();
 
   constructor(private http: HttpClient) {
-    this.http.get('http://localhost:8080/api/players')
+    this.http.get('/api/players')
       .subscribe((players: Array<any>) => this.playersSubject.next(players));
   }
 }
