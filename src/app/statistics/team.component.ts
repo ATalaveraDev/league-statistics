@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class TeamComponent {
   @Input() owner: string;
-  @Input() team: Observable<any>;
+  @Input() team: any;
 
   constructor() {}
 }
