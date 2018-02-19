@@ -5,12 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "node main.js",
-    "build": "ng build --prod",
+    "build": "ng build",
     "serve": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "postinstall": "ng build"
+    "postinstall": "ng build --prod"
   },
   "engines": {
     "node": "6.9.2",
