@@ -1,57 +1,43 @@
-const https = require('https');
 var constants = require('../constants.js');
 const axios = require('axios');
 
 module.exports = function (app) {
   app.route('/api/players/:playerId/points/live')
     .get(function (request, response) {
-      getPoints(request).then(function (result) {
-        var promisesArray = [];
-        var teamPoints = [];
+      getPoints(request).then(function (team) {
+        var result = [];
 
-        promisesArray.push(axios.get(constants.hostname + constants.playerPath + result.data.formation.goalkeeper[0].id, {headers: {'Authorization': 'Bearer ' + request.headers.bearer}}).then(function (response) {
-          teamPoints.push(response.data);
+        team.data.formation.goalkeeper.forEach(function (player) {
+          var points = player.week_points ? player.week_points : '-';
 
-          return teamPoints;
-        }));
-
-        result.data.formation.defender.forEach(function (player) {
-          promisesArray.push(axios.get(constants.hostname + constants.playerPath + player.id, {headers: {'Authorization': 'Bearer ' + request.headers.bearer}}).then(function (response) {
-            teamPoints.push(response.data);
-
-            return teamPoints;
-          }));
+          result.push({name: player.nickname, points: points, picture: player.image96x96});
         });
 
-        result.data.formation.midfield.forEach(function (player) {
-          promisesArray.push(axios.get(constants.hostname + constants.playerPath + player.id, {headers: {'Authorization': 'Bearer ' + request.headers.bearer}}).then(function (response) {
-            teamPoints.push(response.data);
+        team.data.formation.defender.forEach(function (player) {
+          var points = player.week_points ? player.week_points : '-';
 
-            return teamPoints;
-          }));
+          result.push({name: player.nickname, points: points, picture: player.image96x96});
         });
 
-        result.data.formation.striker.forEach(function (player) {
-          promisesArray.push(axios.get(constants.hostname + constants.playerPath + player.id, {headers: {'Authorization': 'Bearer ' + request.headers.bearer}}).then(function (response) {
-            teamPoints.push(response.data);
+        team.data.formation.midfield.forEach(function (player) {
+          var points = player.week_points ? player.week_points : '-';
 
-            return teamPoints;
-          }));
+          result.push({name: player.nickname, points: points, picture: player.image96x96});
         });
 
-        axios.all(promisesArray).then(axios.spread(function () {
-          var result = [];
+        team.data.formation.striker.forEach(function (player) {
+          var points = player.week_points ? player.week_points : '-';
 
-          teamPoints.forEach(function (player) {
-            result.push({name: player.nickname, points: player.player_stats[player.player_stats.length - 1].total_points, picture: player.image96x96});
-          });
+          result.push({name: player.nickname, points: points, picture: player.image96x96});
+        });
 
-          return response.send(result);
-        }));
+        return response.send(result);
       });
     });
 
   function getPoints(request) {
-    return axios.get(constants.hostname + constants.teamPath + request.params.playerId + '/lineup', {headers: {'Authorization': 'Bearer ' + request.headers.bearer}});
+    return axios.get('https://api-game.laligafantasymarca.com/api/1/week/current', {headers: {'Authorization': 'Bearer ' + request.headers.bearer}}).then(function (response) {
+      return axios.get(constants.hostname + constants.teamPath + request.params.playerId + '/lineup/' + (response.data.week_number - 1).toString(), {headers: {'Authorization': 'Bearer ' + request.headers.bearer}});
+    });
   }
 };
