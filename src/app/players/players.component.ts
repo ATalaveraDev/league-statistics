@@ -31,6 +31,5 @@ export class PlayersComponent implements OnInit {
       categories: this.route.snapshot.data.standings.labels,
       dataset: this.route.snapshot.data.standings.dataset
     };
-    this.playersSrv.getLivePoints();
   }
 }

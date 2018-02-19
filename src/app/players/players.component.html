@@ -1,47 +1,15 @@
-<fieldset>
-  <legend>Puntos</legend>
-  <div class="row">
-    <div class="col-xs-12 text-center">
-      <fusioncharts
-        [id]="id"
-        [width]="width"
-        [height]="height"
-        [type]="type"
-        [dataFormat]="dataFormat"
-        [dataSource]="dataSource"
-      ></fusioncharts>
-    </div>
+<div class="row">
+  <div class="col-xs-12 text-center">
+    <fusioncharts
+      [id]="id"
+      [width]="width"
+      [height]="height"
+      [type]="type"
+      [dataFormat]="dataFormat"
+      [dataSource]="dataSource"
+    ></fusioncharts>
   </div>
-</fieldset>
-<fieldset>
-  <legend>Puntos en directo</legend>
-  <div class="row">
-    <div class="col-xs-4">
-      <p>Yerbinho</p>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let player of playersSrv.yerbinhoLivePoints$ | async">
-          {{player.name}} <span class="badge">{{player.points}}</span>
-        </li>
-      </ul>
-    </div>
-    <div class="col-xs-4">
-      <p>Txarlo Magno</p>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let player of playersSrv.txarloLivePoints$ | async">
-          {{player.name}} <span class="badge">{{player.points}}</span>
-        </li>
-      </ul>
-    </div>
-    <div class="col-xs-4">
-      <p>The Pumpkin</p>
-      <ul class="list-group">
-        <li class="list-group-item" *ngFor="let player of playersSrv.pumpkinLivePoints$ | async">
-          {{player.name}} <span class="badge">{{player.points}}</span>
-        </li>
-      </ul>
-    </div>
-  </div>
-</fieldset>
+</div>
 <fieldset>
   <legend>Datos</legend>
   <div class="row">
