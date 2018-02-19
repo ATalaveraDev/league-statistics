@@ -13,6 +13,10 @@ const routes = [
   {
     path: 'teams',
     loadChildren: 'app/teams/teams.module#TeamsModule'
+  },
+  {
+    path: 'points',
+    loadChildren: 'app/points/points.module#PointsModule'
   }
 ];
 

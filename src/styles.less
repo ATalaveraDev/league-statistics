@@ -1,0 +1,35 @@
+/* You can add global styles to this file, and also import other style files */
+.margin-10 {
+  margin: 15px;
+}
+
+g[class$='creditgroup'] {
+  display: none;
+}
+
+.navigation {
+  background-color: #C73A39;
+  height: 33px;
+}
+
+.navigation ul {
+  list-style: none;
+  padding-top: 5px;
+}
+
+.navigation ul {
+  & li {
+    float: left;
+    display: block;
+    width: 25%;
+    text-align: center;
+
+    & a {
+      color: #9e8e95;
+    }
+
+    & a.active {
+      color: #fff;
+    }
+  }
+}

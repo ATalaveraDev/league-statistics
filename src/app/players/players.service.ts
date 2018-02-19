@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
 import { forEach } from '@angular/router/src/utils/collection';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PlayersService {
@@ -51,7 +52,7 @@ export class PlayersService {
   }
 
   getStandings() {
-    return this.http.get('/api/fixtures/standings');
+    return this.http.get(environment.api + '/fixtures/standings');
   }
 
   getTeamMembers(): void {
@@ -130,11 +131,11 @@ export class PlayersService {
   }
 
   getLivePoints(): void {
-    this.http.get('/api/players/968709/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
+    this.http.get(environment.api + '/players/968709/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
       .subscribe((response => this.txarloLivePointsSubject.next(response)));
-    this.http.get('/api/players/1008589/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
+    this.http.get(environment.api + '/players/1008589/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
       .subscribe((response => this.yerbinhoLivePointsSubject.next(response)));
-    this.http.get('/api/players/969731/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
+    this.http.get(environment.api + '/players/969731/points/live', {headers: new HttpHeaders({Bearer: '471f92412e69226a87f489c4dfa90a93'})})
       .subscribe((response => this.pumpkinLivePointsSubject.next(response)));
   }
 }
