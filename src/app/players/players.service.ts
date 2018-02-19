@@ -127,7 +127,7 @@ export class PlayersService {
   }
 
   getResults(): void {
-    this.http.get('/api/statistics/results').subscribe(data => this.scoresSubject.next(data));
+    this.http.get(environment.api + '/statistics/results').subscribe(data => this.scoresSubject.next(data));
   }
 
   getLivePoints(): void {
