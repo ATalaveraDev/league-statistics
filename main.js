@@ -8,6 +8,7 @@ var mongoose = require('mongoose');
 
 var port = process.env.PORT || 8080;
 var db = require('./config/db.js');
+var path = require('path');
 
 mongoose.connect(db.url);
 
@@ -21,13 +22,17 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use(express.static(__dirname + '/dist'));
-
 require('./server/routes/players.routes')(app);
 require('./server/routes/fixtures.routes')(app);
 require('./server/routes/teams.routes')(app);
 require('./server/routes/statistics.routes')(app);
 require('./server/routes/points.routes')(app);
+
+app.use(express.static(__dirname + '/dist'));
+
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/dist/index.html'));
+});
 
 app.listen(port);
 
