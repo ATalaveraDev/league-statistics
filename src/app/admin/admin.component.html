@@ -1,8 +1,12 @@
-<div class="row">
-  <div class="col-xs-12 col-md-6">
-    <app-register-fixture></app-register-fixture>
+<app-register-fixture></app-register-fixture>
+<br>
+<h4 class="text-center">Última Jornada</h4>
+<h5 class="text-center">{{(adminSrv.lastFixture$ | async)?.name}}</h5>
+<div class="row" *ngFor="let result of (adminSrv.lastFixture$ | async)?.players">
+  <div class="col-xs-offset-3 col-xs-5">
+    <label>{{result.name}}</label>
   </div>
-  <div class="col-xs-12 col-md-6">
-    <app-register-player></app-register-player>
+  <div class="col-xs-2">
+    {{result.points}}
   </div>
 </div>

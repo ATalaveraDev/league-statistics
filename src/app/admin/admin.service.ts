@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { ReplaySubject } from 'rxjs/ReplaySubject';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class AdminService {
@@ -15,20 +17,7 @@ export class AdminService {
   }
 
   getLastFixture(): void {
-    this.http.get('/api/fixtures/last')
+    this.http.get(environment.api + '/fixtures/last')
       .subscribe((response: any) => this.lastFixtureSubject.next({ players: response.results, name: response.name }));
-  }
-
-  addTeamPlayer(player: any): void {
-    const body = {
-      soccerPlayer: {
-        points: player.points,
-        name: player.name,
-        position: player.position
-      }
-    };
-
-    this.http.post('/api/players/' + player.team + '/team/soccer-player', body)
-      .subscribe();
   }
 }
