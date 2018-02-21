@@ -37,8 +37,8 @@ module.exports = function (app) {
 
   app.route('/api/fixtures/last')
     .get(function (request, response) {
-      Fixture.findOne(function (error, response) {
-        return response;
+      Fixture.findOne(function (error, result) {
+        return result;
       }).sort({ 'name': -1 }).then(function (fixture) {
         return response.send(fixture);
       });

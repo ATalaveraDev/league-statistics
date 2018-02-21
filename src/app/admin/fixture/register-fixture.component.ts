@@ -5,7 +5,8 @@ import { AdminService } from '../admin.service';
 
 @Component({
   selector: 'app-register-fixture',
-  templateUrl: 'register-fixture.component.html'
+  templateUrl: 'register-fixture.component.html',
+  styleUrls: ['register-fixture.component.less']
 })
 export class RegisterFixtureComponent implements OnInit {
   fixtures: Array<string>;
@@ -26,8 +27,6 @@ export class RegisterFixtureComponent implements OnInit {
       player2points: new FormControl('', Validators.required),
       player3points: new FormControl('', Validators.required)
     });
-
-    this.adminSrv.getLastFixture();
   }
 
   submitForm(): void {
