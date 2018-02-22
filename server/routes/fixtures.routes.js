@@ -37,10 +37,8 @@ module.exports = function (app) {
 
   app.route('/api/fixtures/last')
     .get(function (request, response) {
-      Fixture.findOne(function (error, result) {
-        return result;
-      }).sort({ 'name': -1 }).then(function (fixture) {
-        return response.send(fixture);
+      Fixture.find(function (error, result) {
+        return response.send(result[result.length - 1]);
       });
     });
 
@@ -65,23 +63,42 @@ module.exports = function (app) {
         }).then(function (fixtures) {
           fixtures.forEach(function (element) {
             results.labels[0].category.push({ label: element.name });
+
+            element.results.forEach(function (fixture) {
+              switch (fixture.name) {
+                case 'Yerbinho':
+                  results.dataset[0].data.push({ value: fixture.points });
+                  break;
+                case 'Txarlo Magno':
+                  results.dataset[1].data.push({ value: fixture.points });
+                  break;
+                case 'ThePumpkin':
+                  results.dataset[2].data.push({ value: fixture.points });
+                  break;
+              }
+            });
           });
 
-          PlayerFixture.find(function (error, response) {
+          return res.send(results);
+
+          /*PlayerFixture.find(function (error, response) {
             return response;
           }).then(function (fixtures) {
             fixtures.forEach(function (fixture) {
-              results.dataset.map(function (player, index) {
-                if (player.seriesname === fixture.playerName) {
-                  results.dataset[index].data.push({
-                    value: fixture.playerPoints
-                  });
-                }
-              });
+              switch (fixture.playerName) {
+                case 'Yerbinho':
+                  results.dataset[0].data.push({ value: fixture.playerPoints });
+                  break;
+                case 'Txarlo Magno':
+                  results.dataset[1].data.push({ value: fixture.playerPoints });
+                  break;
+                case 'ThePumpkin':
+                  results.dataset[2].data.push({ value: fixture.playerPoints });
+                  break;
+              }
             });
-
             return res.send(results);
-          });
+          });*/
         });
       });
     });
