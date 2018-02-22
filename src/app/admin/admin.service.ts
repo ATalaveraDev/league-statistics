@@ -12,7 +12,7 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   editFixture(fixture): void {
-    this.http.post('/api/fixtures', fixture)
+    this.http.post(environment.api + '/fixtures', fixture)
       .subscribe((result) => this.lastFixtureSubject.next(result));
   }
 
