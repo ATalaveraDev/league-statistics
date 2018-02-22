@@ -1,44 +1,12 @@
 <h3 class="text-center">Equipos</h3>
-<!--<div class="row text-center">
-  <div class="col-xs-4">
-    <label>Detalles</label>
-    <br>
-    <label>Mejor defensa:</label> {{(playersSrv.yerbinhoTeam$ | async)?.defenders.best.nickname}}
-    <hr>
-    <label>Mejor medio:</label> {{(playersSrv.yerbinhoTeam$ | async)?.midfielders.best.nickname}}
-    <hr>
-    <label>Mejor delantero:</label> {{(playersSrv.yerbinhoTeam$ | async)?.strikers.best.nickname}}
-    <hr>
-  </div>
-  <div class="col-xs-4">
-    <label>Detalles</label>
-    <br>
-    <label>Mejor defensa:</label> {{(playersSrv.txarloTeam$ | async)?.defenders.best.nickname}}
-    <hr>
-    <label>Mejor medio:</label> {{(playersSrv.txarloTeam$ | async)?.midfielders.best.nickname}}
-    <hr>
-    <label>Mejor delantero:</label> {{(playersSrv.txarloTeam$ | async)?.strikers.best.nickname}}
-    <hr>
-  </div>
-  <div class="col-xs-4">
-    <label>Detalles</label>
-    <br>
-    <label>Mejor defensa:</label> {{(playersSrv.pumpkinTeam$ | async)?.defenders.best.nickname}}
-    <hr>
-    <label>Mejor medio:</label> {{(playersSrv.pumpkinTeam$ | async)?.midfielders.best.nickname}}
-    <hr>
-    <label>Mejor delantero:</label> {{(playersSrv.pumpkinTeam$ | async)?.strikers.best.nickname}}
-    <hr>
-  </div>
-</div>-->
 <div class="row text-center">
-  <div class="col-xs-4">
+  <div class="col-md-4 col-xs-12">
     <app-team [team]="playersSrv.yerbinhoTeam$ | async" [owner]="'Yerbinho'"></app-team>
   </div>
-  <div class="col-xs-4">
+  <div class="col-md-4 col-xs-12">
     <app-team [team]="playersSrv.txarloTeam$ | async" [owner]="'Txarlo Magno'"></app-team>
   </div>
-  <div class="col-xs-4">
+  <div class="col-md-4 col-xs-12">
     <app-team [team]="playersSrv.pumpkinTeam$ | async" [owner]="'The Pumpkin'"></app-team>
   </div>
 </div>
