@@ -4,7 +4,8 @@ import { PlayersService } from './players.service';
 
 @Component({
   selector: 'app-players',
-  templateUrl: 'players.component.html'
+  templateUrl: 'players.component.html',
+  styleUrls: ['players.component.less']
 })
 export class PlayersComponent implements OnInit {
   id = 'chart1';
