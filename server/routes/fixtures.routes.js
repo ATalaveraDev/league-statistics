@@ -1,6 +1,7 @@
 var Fixture = require('../models/fixture');
 var Player = require('../models/player');
 var PlayerFixture = require('../models/playerFixture');
+var Standing = require('../models/standing');
 var Q = require('q');
 
 module.exports = function (app) {
@@ -80,6 +81,48 @@ module.exports = function (app) {
           });
 
           return res.send(results);
+        });
+      });
+    });
+
+  app.route('/api/standings')
+    .get(function (request, response) {
+      Standing.find(function (error, result) {
+        return response.send(result);
+      });
+    })
+    .post(function (request, response) {
+      var standing = new Standing();
+
+      standing.name = request.body.name;
+      standing.points = [
+        {
+          player: 'Yerbinho',
+          points: 0
+        },
+        {
+          player: 'Txarlo Magno',
+          points: 0
+        },
+        {
+          player: 'The Pumpkin',
+          points: 0
+        }
+      ];
+
+      Standing.find(function (error, result) {
+        if (result.length > 0) {
+          standing.points[0].points = result[result.length - 1].points[0].points + request.body.points[0].points;
+          standing.points[1].points = result[result.length - 1].points[1].points + request.body.points[1].points;
+          standing.points[2].points = result[result.length - 1].points[2].points + request.body.points[2].points;
+        } else {
+          standing.points[0].points = request.body.points[0].points;
+          standing.points[1].points = request.body.points[1].points;
+          standing.points[2].points = request.body.points[2].points;
+        }
+
+        standing.save().then(function (standing) {
+          response.send(standing);
         });
       });
     });
