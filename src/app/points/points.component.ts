@@ -3,7 +3,8 @@ import { PlayersService } from '../players/players.service';
 
 @Component({
   selector: 'app-points',
-  templateUrl: './points.component.html'
+  templateUrl: './points.component.html',
+  styleUrls: ['points.component.less']
 })
 export class PointsComponent {
   constructor(public playersSrv: PlayersService) {

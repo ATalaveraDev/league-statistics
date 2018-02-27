@@ -1,15 +1,14 @@
+body {
+  background-image: url(http://game.laligafantasymarca.com/assets/images/core/background/bg-webapp.png);
+}
+
+label, h1, h2, h3, h4, h5, .section-title {
+  color: white;
+}
+
 .navbar.navbar-default {
   background-color: #C73A39;
-
-  & .navbar-toggle {
-    & button {
-      border-color: #fff;
-
-      & span {
-        color: #fff;
-      }
-    }
-  }
+  border: none;
 }
 
 .navbar-default .nav.navbar-nav {
@@ -19,6 +18,11 @@
   & li a {
     color: #fff;
   }
+}
+
+.navbar-toggle.collapsed {
+  background-color: #fff;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-header {

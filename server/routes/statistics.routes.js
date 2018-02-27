@@ -22,28 +22,17 @@ module.exports = function (app) {
       ];
 
       Fixture.find(function (error, result) {
-        result.slice(2).forEach(function (fixture) {
-          setScores(fixture.results);
+        var fixtures = result.slice(2);
+
+        fixtures.forEach(function (fixture) {
+          fixture.results = setScores(fixture.results);
+
+          setWins(fixture.results);
+          setLost(fixture.results);
         });
 
         response.send(results);
       });
-
-      function setScores(fixturePoints) {
-        fixturePoints.sort(function (elementA, elementB) {
-          if (elementA.points < elementB.points) {
-            return 1;
-          }
-          if (elementA.points > elementB.points) {
-            return -1;
-          }
-
-          return 0;
-        });
-
-        setWins(fixturePoints);
-        setLost(fixturePoints);
-      }
 
       function setWins(fixturePoints) {
         if (fixturePoints[0].points !== fixturePoints[1].points) {
@@ -67,4 +56,90 @@ module.exports = function (app) {
         }
       }
     });
+
+  app.route('/api/statistics/streaks')
+    .get(function (request, response) {
+      var provisionalStreaks = [
+        {
+          name: 'Yerbinho',
+          winStreak: 0,
+          provStreak: 1
+        },
+        {
+          name: 'Txarlo Magno',
+          winStreak: 0,
+          provStreak: 1
+        },
+        {
+          name: 'The Pumpkin',
+          winStreak: 0,
+          provStreak: 1
+        }
+      ];
+
+      Fixture.find(function (error, result) {
+        var fixtures = result.slice(2);
+
+        fixtures.forEach(function (fixture, index) {
+          if (index > 0) {
+            if (fixture.results[0].points >= fixtures[index - 1].results[0].points) {
+              provisionalStreaks[0].provStreak++;
+            } else {
+              if (provisionalStreaks[0].winStreak < provisionalStreaks[0].provStreak) {
+                provisionalStreaks[0].winStreak = provisionalStreaks[0].provStreak;
+              }
+              provisionalStreaks[0].provStreak = 1;
+            }
+
+            if (fixture.results[1].points >= fixtures[index - 1].results[1].points) {
+              provisionalStreaks[1].provStreak++;
+            } else {
+              if (provisionalStreaks[1].winStreak < provisionalStreaks[1].provStreak) {
+                provisionalStreaks[1].winStreak = provisionalStreaks[1].provStreak;
+              }
+              provisionalStreaks[1].provStreak = 1;
+            }
+
+            if (fixture.results[2].points >= fixtures[index - 1].results[2].points) {
+              provisionalStreaks[2].provStreak++;
+            } else {
+              if (provisionalStreaks[2].winStreak < provisionalStreaks[2].provStreak) {
+                provisionalStreaks[2].winStreak = provisionalStreaks[2].provStreak;
+              }
+              provisionalStreaks[2].provStreak = 1;
+            }
+          }
+        });
+
+        var finalStreaks = [
+          {
+            name: 'Yerbinho',
+            win: provisionalStreaks[0].winStreak
+          },
+          {
+            name: 'Txarlo Magno',
+            win: provisionalStreaks[1].winStreak
+          },
+          {
+            name: 'The Pumpkin',
+            win: provisionalStreaks[2].winStreak
+          }
+        ];
+
+        response.send(finalStreaks);
+      });
+    });
+
+  function setScores(fixtures) {
+    return fixtures.sort(function (elementA, elementB) {
+      if (elementA.points < elementB.points) {
+        return 1;
+      }
+      if (elementA.points > elementB.points) {
+        return -1;
+      }
+
+      return 0;
+    });
+  }
 };
