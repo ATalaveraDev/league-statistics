@@ -1,26 +1,11 @@
 <div class="row">
   <div class="col-xs-12 col-md-4">
-    <p class="text-center player-title">Yerbinho</p>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let player of playersSrv.yerbinhoLivePoints$ | async">
-        {{player.name}} <span class="badge">{{player.points}}</span>
-      </li>
-    </ul>
+    <app-player-points [name]="'Yerbinho'" [players]="playersSrv.yerbinhoLivePoints$ | async"></app-player-points>
   </div>
   <div class="col-xs-12 col-md-4">
-    <p class="text-center player-title">Txarlo Magno</p>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let player of playersSrv.txarloLivePoints$ | async">
-        {{player.name}} <span class="badge">{{player.points}}</span>
-      </li>
-    </ul>
+    <app-player-points [name]="'Txarlo Magno'" [players]="playersSrv.txarloLivePoints$ | async"></app-player-points>
   </div>
   <div class="col-xs-12 col-md-4">
-    <p class="text-center player-title">The Pumpkin</p>
-    <ul class="list-group">
-      <li class="list-group-item" *ngFor="let player of playersSrv.pumpkinLivePoints$ | async">
-        {{player.name}} <span class="badge">{{player.points}}</span>
-      </li>
-    </ul>
+    <app-player-points [name]="'The Pumpkin'" [players]="playersSrv.pumpkinLivePoints$ | async"></app-player-points>
   </div>
 </div>

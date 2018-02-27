@@ -1,0 +1,6 @@
+<p class="text-center player-title">{{ name }}</p>
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let player of players">
+    {{player.name}} <span class="badge">{{player.points}}</span>
+  </li>
+</ul>
