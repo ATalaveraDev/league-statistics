@@ -16,6 +16,8 @@ const routes = [
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
-  providers: [PlayersResolver]
+  providers: [
+    PlayersResolver
+  ]
 })
 export class PlayersRoutingModule { }

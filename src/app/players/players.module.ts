@@ -9,6 +9,7 @@ import { FusionChartsModule } from 'angular4-fusioncharts';
 import { PlayersComponent } from './players.component';
 import { PlayersRoutingModule } from './players.routing.module';
 import { PlayersService } from './players.service';
+import { StandingsService } from './standings.service';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
@@ -19,6 +20,9 @@ FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
     FusionChartsModule
   ],
   declarations: [PlayersComponent],
-  providers: [PlayersService]
+  providers: [
+    PlayersService,
+    StandingsService
+  ]
 })
 export class PlayersModule { }
