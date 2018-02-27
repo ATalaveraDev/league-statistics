@@ -7,16 +7,16 @@ const routes = [
     loadChildren: 'app/admin/admin.module#AdminModule'
   },
   {
-    path: 'players',
-    loadChildren: 'app/players/players.module#PlayersModule'
-  },
-  {
     path: 'teams',
     loadChildren: 'app/teams/teams.module#TeamsModule'
   },
   {
     path: 'points',
     loadChildren: 'app/points/points.module#PointsModule'
+  },
+  {
+    path: 'charts',
+    loadChildren: 'app/charts/charts.module#ChartsModule'
   }
 ];
 

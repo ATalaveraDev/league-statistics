@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-xs-12 col-md-12 text-center chart-container">
+    <fusioncharts
+      [id]="'standingsChart'"
+      [width]="width"
+      [height]="height"
+      [type]="type"
+      [dataFormat]="dataFormat"
+      [dataSource]="standingsDataSource"
+    ></fusioncharts>
+  </div>
+</div>
+<br>
+<div class="row">
+  <div class="col-xs-12 text-center chart-container">
+    <fusioncharts
+      [id]="'pointsChart'"
+      [width]="width"
+      [height]="height"
+      [type]="type"
+      [dataFormat]="dataFormat"
+      [dataSource]="dataSource"
+    ></fusioncharts>
+  </div>
+</div>

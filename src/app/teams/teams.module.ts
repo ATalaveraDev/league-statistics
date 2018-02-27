@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { TeamsRoutingModule } from './teams.routing.module';
 import { TeamsComponent } from './teams.component';
 import { TeamComponent } from '../statistics/team.component';
-import { PlayersService } from '../players/players.service';
+import { PlayersService } from '../charts/players.service';
 import { CommonModule } from '@angular/common';
 
 @NgModule({

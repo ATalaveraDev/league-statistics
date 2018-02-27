@@ -1,28 +1,28 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChartsRoutingModule } from './charts.routing.module';
 
 import * as FusionCharts from 'fusioncharts';
 import * as Charts from 'fusioncharts/fusioncharts.charts';
-import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 import { FusionChartsModule } from 'angular4-fusioncharts';
+import * as FintTheme from 'fusioncharts/themes/fusioncharts.theme.fint';
 
-import { PlayersComponent } from './players.component';
-import { PlayersRoutingModule } from './players.routing.module';
-import { PlayersService } from './players.service';
+import { ChartsComponent } from './charts.component';
 import { StandingsService } from './standings.service';
+import { PlayersService } from './players.service';
 
 FusionChartsModule.fcRoot(FusionCharts, Charts, FintTheme);
 
 @NgModule({
   imports: [
     CommonModule,
-    PlayersRoutingModule,
-    FusionChartsModule
+    FusionChartsModule,
+    ChartsRoutingModule
   ],
-  declarations: [PlayersComponent],
+  declarations: [ChartsComponent],
   providers: [
-    PlayersService,
-    StandingsService
+    StandingsService,
+    PlayersService
   ]
 })
-export class PlayersModule { }
+export class ChartsModule { }

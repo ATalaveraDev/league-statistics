@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PlayersService } from '../players/players.service';
+import { PlayersService } from '../charts/players.service';
 
 @Component({
   selector: 'app-points',

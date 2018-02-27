@@ -2,12 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ReplaySubject } from 'rxjs/ReplaySubject';
 import { Observable } from 'rxjs/Observable';
-import { forEach } from '@angular/router/src/utils/collection';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class PlayersService {
-  // endpoint para saber la pasta https://api-game.laligafantasymarca.com/api/1/league/01320484/ranking/23
   standingsSubject = new ReplaySubject<any>();
   standings$ = this.standingsSubject.asObservable();
 

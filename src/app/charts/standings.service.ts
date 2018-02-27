@@ -15,7 +15,7 @@ export class StandingsService {
     this.standings$ = this.standingsSubject.asObservable();
   }
 
-  getClasification(): Observable<any> {
+  getStandings(): Observable<any> {
     return this.http.get(environment.api + '/standings');
   }
 }

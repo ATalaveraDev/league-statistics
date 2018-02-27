@@ -27,6 +27,7 @@ require('./server/routes/fixtures.routes')(app);
 require('./server/routes/teams.routes')(app);
 require('./server/routes/statistics.routes')(app);
 require('./server/routes/points.routes')(app);
+require('./server/routes/standings.routes')(app);
 
 app.use(express.static(__dirname + '/dist'));
 
