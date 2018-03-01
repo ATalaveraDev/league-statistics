@@ -34,7 +34,8 @@ export class ChartsComponent implements OnInit {
         caption: 'Clasificación',
         subCaption: '',
         theme: 'fint',
-        paletteColors: '#0075c2,#1aaf5d, #ff0000'
+        paletteColors: '#0075c2,#1aaf5d, #ff0000',
+        formatNumberScale: '0',
       },
       categories: this.route.snapshot.data.standings.labels,
       dataset: this.route.snapshot.data.standings.points
